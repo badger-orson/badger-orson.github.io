@@ -209,4 +209,3 @@ function makeCar(name, year, model) { //this function makes a car object. but wh
 }
 
 
-myNewCar.mailCar();
