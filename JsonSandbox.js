@@ -31,18 +31,18 @@ function jsonBoxOSand(){ //My JSON Sanbox to play in
                                    //it will just print "null"
 
     //Nasty Path
-    try{
-    var badjsonExample = {"friends": [
-        {"name": "David", "surname":"Truscott"},
-        {"name": "Jake", "surname": "Robertson"},
-        {"name": "Samantha", "surname" : "Stavist"}                        
-    }; //Leave out the closing brace and you are doomed...Not really just it will break
-        // The Function wont run if I do not have the bracket but it will fail if missing
+    // try{
+    // var badjsonExample = {"friends": [
+    //     {"name": "David", "surname":"Truscott"},
+    //     {"name": "Jake", "surname": "Robertson"},
+    //     {"name": "Samantha", "surname" : "Stavist"}                        
+    // }; //Leave out the closing brace and you are doomed...Not really just it will break
+    //     // The Function wont run if I do not have the bracket but it will fail if missing Commented out to maintain broken code.
     
-        console.log(JSON.parse(badjsonExample));
-    }catch(e)    {
-        console.log(e.toString);
-    }
+    //     console.log(JSON.parse(badjsonExample));
+    // }catch(e)    {
+    //     console.log(e.toString);
+    // }
 
     /////////Implementation of Stringify/////////
 
