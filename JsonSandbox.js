@@ -12,11 +12,15 @@ function jsonBoxOSand(){ //My JSON Sanbox to play in
                             {"name": "David", "surname":"Truscott"},
                             {"name": "Jake", "surname": "Robertson"},
                             {"name": "Samantha", "surname" : "Stavist"}                        
-                            ]}
+                            ]};
+    console.log(jsonStringExample); //This will work because the above is already an object
+    try{
+    console.log(JSON.parse(jsonStringExample)); //parse out the json to a javascript Object // this will throw an error because the object is already a json
+    }catch(e){
+        console.log(e.toString());
+    }
 
-    console.log(jsonStringExample);
-    console.log(JSON.parse(jsonStringExample)); //parse out the json to a javascript Object
-
+    var parseExample = '{ "name":"John", "age":30, "city":"New York"}';
 
     //JSON.parse cannot parse a non json object.
 
