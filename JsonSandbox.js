@@ -22,6 +22,11 @@ function jsonBoxOSand(){ //My JSON Sanbox to play in
 
     var parseExample = '{ "name":"John", "age":30, "city":"New York"}';
 
+    try{
+    console.log(JSON.parse(parseExample));
+    }catch(e){
+        console.log(e.toString());
+    }
     //JSON.parse cannot parse a non json object.
 
     try { //Use a try catch to not break the function. This allows it to keep running.
