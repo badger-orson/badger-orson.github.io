@@ -69,3 +69,5 @@ function jsonBoxOSand(){ //My JSON Sanbox to play in
     console.log(nothingness);
 
 }
+
+jsonBoxOSand(); //Call the function to see it work
