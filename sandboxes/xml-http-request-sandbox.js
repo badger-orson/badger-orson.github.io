@@ -9,21 +9,36 @@ function Sandbox() { // This is the correct way to implement the XML http reques
  //obtaining rexburgs weather
 
  //The stuff that the call will return is data
-    var data = "http://api.openweathermap.org/data/2.5/weather?zip=83440,us&appid=410ae816ebfc530cb61e454917f053ff";
+ //The reason that I am using this api is because it is really simple to use. Just attach the api key at the end of  the string
+    var key = "410ae816ebfc530cb61e454917f053ff";
+    var data = "http://api.openweathermap.org/data/2.5/weather?zip=83440,us&appid=" + key;
     var http_request = new XMLHttpRequest();
 
     http_request.onreadystatechange = function() {
         if (http_request.readyState == 4) {
-            var jsonObject = JSON.parse(http_request.responseText);
-            console.log(jsonObject)
-            // The info that we get here we can just make it into an object by parsing the JSON
-            console.log(jsonObject.name);
-            console.log(jsonObject.weather[0].description);
+            try{
+                var jsonObject = JSON.parse(http_request.responseText);
+                console.log(jsonObject)
+                // The info that we get here we can just make it into an object by parsing the JSON as above I did.
+                console.log(jsonObject.name);
+                console.log(jsonObject.weather[0].description);
+            }catch (e) {
+                console.log(e.toString());
+            }
+
+                
         }        
     };
 
-    http_request.open("GET", data, true);
-    http_request.send();
+    http_request.open("GET", data, true); //This is what opens up the request and it sends the data accordingly. data is just a url.
+    http_request.send(); //this will just send the request.
+
+    //Types of readyStates
+    // 0, Client was created but we have not ran OPEN()
+    // 1, Open() was called but nothing else has occurred yet.
+    // 2, Headers have been received but not sent yet. these are headers ("GET", data, true)
+    // 3, our response holds partial data, this might or might not work depending on our api.
+    // 4, Response is complete/ finished. We now have the data requested. Now it can be parsed ect..
 }
 
 Sandbox();
@@ -32,16 +47,22 @@ Sandbox();
 function nastySandbox(){
     
         //nasty path attempting to get rexburgs weather data
-        var data = "http://api.openweathermap.org/data/2.5/weather?zip=83440,us&appid=410ae816ebfc530cb61e454917f053ff";
+        var key = "410ae816ebfc530cb61e454917f053ff";
+        var data = "http://api.openweathermap.org/data/2.5/weather?zip=83440,us&appid=" + key;
         var http_request = new XMLHttpRequest();
     
         http_request.onreadystatechange = function () {
             //if you do not have a readystate here it will not execute the code. So nothing will happen
             if (http_request == 4) {
-                var jsonObj = JSON.parse(http_request.responseText);
-    
-                console.log(jsonObj.name);
-                console.log(jsonObj.weather[0].description);
+                try{
+                    var jsonObj = JSON.parse(http_request.responseText);
+                    console.log(jsonObj.name);
+                    console.log(jsonObj.weather[0].description);
+                }catch (e) {
+                    console.log(e.toString());
+                }
+                    
+
             }
         };
     
@@ -53,24 +74,35 @@ function nastySandbox(){
 
         http_requestTwo.onreadystatechange = function () {
             if (http_requestTwo.readyState == 1) {
-                var obj = JSON.parse(http_requestTwo.responseText);
-
-                console.log(obj); // Did we get anything back? No data is not transfered.
+                try{
+                    var jsonObj = JSON.parse(http_requestTwo.responseText);
+                    console.log(obj); // Did we get anything back? No data is not transfered.
+                }catch (e) {
+                    console.log(e.toString());
+                }
+                    
+                
             }
         }
 
         http_requestTwo.open("GET", data, true);
         http_requestTwo.send();
+        
 
 
         http_request_three = new XMLHttpRequest();
         //What happens if you send a different number than 4 for a ready state
 
         http_request_three.onreadystatechange = function () {
-            if (http_request_three.readyState == 2) { //Data Is never sent anywhere
-                var obj = JSON.parse(http_request_three.responseText);
-
-                console.log(obj); // Did we get anything back? No data is not transfered.
+            if (http_request_three.readyState == 2) { //Data Is never sent anywhere But the headers are recieved
+                try{
+                    var jsonObj = JSON.parse(http_request_three.responseText);
+                    console.log(obj); // Did we get anything back? No data, is not transfered.
+                }catch (e) {
+                    console.log(e.toString());
+                }
+                    
+                
             }
         }
 
@@ -81,10 +113,12 @@ function nastySandbox(){
 
 nastySandbox();
 
+//In this sandbox I am attempting to demonstrate what happens if 
 function nastySandboxAgain(){
     
         //nasty path attempting to get rexburgs weather data
-        var data = "http://api.openweathermap.org/data/2.5/weather?zip=83440,us&appid=410ae816ebfc530cb61e454917f053ff";
+        var key = "410ae816ebfc530cb61e454917f053ff";
+        var data = "http://api.openweathermap.org/data/2.5/weather?zip=83440,us&appid=" + key;
         
         //If an api works what about something that is not an api?
         //var data = "http://google.com"; has been blocked by CORS policy: No 'Access-Control-Allow-Origin' wont work!
@@ -95,12 +129,17 @@ function nastySandboxAgain(){
         var http_request = new XMLHttpRequest();
     
         http_request.onreadystatechange = function () {
-            //if you do not have a readystate here it will not execute the code. So nothing will happen
+
             if (http_request.readyState == 4) {
-                var jsonObj = JSON.parse(http_request.responseText);
-    
-                console.log(jsonObj.name);
-                console.log(jsonObj.weather[0].description);
+                try{
+                    var jsonObj = JSON.parse(http_request.responseText);
+                    console.log(jsonObj.name);
+                    console.log(jsonObj.weather[0].description);
+                }catch (e) {
+                    console.log(e.toString());
+                }
+
+
             }
         };
     
