@@ -11,7 +11,7 @@ function Sandbox() { // This is the correct way to implement the XML http reques
  //The stuff that the call will return is data
  //The reason that I am using this api is because it is really simple to use. Just attach the api key at the end of  the string
     var key = "410ae816ebfc530cb61e454917f053ff";
-    var data = "http://api.openweathermap.org/data/2.5/weather?zip=83440,us&appid=" + key;
+    var data = "https://api.openweathermap.org/data/2.5/weather?zip=83440,us&appid=" + key;
     var http_request = new XMLHttpRequest();
 
     http_request.onreadystatechange = function() {
@@ -48,7 +48,7 @@ function nastySandbox(){
     
         //nasty path attempting to get rexburgs weather data
         var key = "410ae816ebfc530cb61e454917f053ff";
-        var data = "http://api.openweathermap.org/data/2.5/weather?zip=83440,us&appid=" + key;
+        var data = "https://api.openweathermap.org/data/2.5/weather?zip=83440,us&appid=" + key;
         var http_request = new XMLHttpRequest();
     
         http_request.onreadystatechange = function () {
@@ -118,7 +118,7 @@ function nastySandboxAgain(){
     
         //nasty path attempting to get rexburgs weather data
         var key = "410ae816ebfc530cb61e454917f053ff";
-        var data = "http://api.openweathermap.org/data/2.5/weather?zip=83440,us&appid=" + key;
+        var data = "https://api.openweathermap.org/data/2.5/weather?zip=83440,us&appid=" + key;
         
         //If an api works what about something that is not an api?
         //var data = "http://google.com"; has been blocked by CORS policy: No 'Access-Control-Allow-Origin' wont work!
