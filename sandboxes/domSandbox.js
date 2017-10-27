@@ -115,19 +115,17 @@ function learningToAppendChild() {
 
     //Appending basically just adds something to the end.
 
-    var btn = document.createElement("button");
+    
     var p2 = document.createElement("p");
     var br = document.createElement("br");
 
-    var btnName =document.createTextNode("Append");
     var pName = document.createTextNode("New Paragraph");
     
-
-    btn.appendChild(btnName);  
+     
     p2.appendChild(pName);
     p2.appendChild(br);
-    p2.appendChild(btn);
 
+    
 
     //This adds the new p2 to our old p with an id of "newerParagraph"
     var currentDiv = document.getElementById("newerParagraph");
@@ -149,42 +147,66 @@ function learningToAppendChild() {
 
 learningToAppendChild();
 
-
-// just make an iterator here;
-var i = 0;
-function insertBeforeBoxOSand() {
-
-    var insertBeforeDiv = document.createElement("div")
-    insertBeforeDiv.setAttribute("id", "parent");
-    var data = document.createTextNode("==================================");
-    insertBeforeDiv.appendChild(data);
-    document.body.appendChild(insertBeforeDiv);
-
-
-    var insertInnerDiv = document.createElement("div")
-    insertInnerDiv.setAttribute("id", "child");
-    var data = document.createTextNode("+++++++++++++++++++++++++++++++++++");
-    insertInnerDiv.appendChild(data);
-    document.body.appendChild(insertInnerDiv);
-
-
-    //Create the thing to be insertedBefore.
-    var el = document.createElement("p");
-    el.innerHTML = "Insert Before" + i;
+var j = 1;
+function appendChildBtn() {
+    var el = document.createElement("li");
+    var elTxt = document.createTextNode("Iteration " + j );
+    el.appendChild(elTxt);
     
-    var parent = document.getElementById("parent");
-    var child = document.getElementById("newerParagraph");
+    var parent = document.getElementById("appendChild");
     
     console.log(parent);
-    console.log(child);
 
-    parent.insertBefore(el, child);
-    i++;
+    parent.appendChild(el);
+    j++
+}
 
+// just make an iterator here;
+var i = 1;
+function insertBeforeBoxOSand() {
+
+
+    //Create the thing to be insertedBefore. this will just create a list and insert the one before every single time.
+    var el = document.createElement("li");
+    var elTxt = document.createTextNode("Iteration " + i );
+    el.appendChild(elTxt);
     
-
+    var parent = document.getElementById("parent");
     
+    console.log(parent);
+
+    parent.insertBefore(el, parent.childNodes[0]);
+    i++;    
 
 }
 
-insertBeforeBoxOSand();
+function removeChildSandbox() {
+    
+    // This removes a child from the list. 
+    try{
+    var parentElement = document.getElementById("appendChild");
+    var childElement = parentElement.lastElementChild; //This will grab the last Item that is the child until it is null, then it breaks.
+    parentElement.removeChild(childElement);
+    }catch(e){
+        console.log(e.toString());
+    }
+
+    //This is a really useful thing if we needed to delete something from the view with something like a button.
+}
+
+function replaceBoxOSand() {
+    var parent = document.getElementById("parent"); // find our parent element
+    var firstChild = parent.firstElementChild; //This will grab the first item
+    var newEl = document.createElement("div");
+    var text = document.createTextNode("New Element"); //This will change the text in for our new item.
+    newEl.appendChild(text);
+
+    console.log(parent); //Just print to the console to see if we get the right item hahah.
+    console.log(firstChild);
+    console.log(newEl);
+
+
+    parent.replaceChild(newEl,firstChild); // This works great.
+}
+
+
