@@ -1,9 +1,13 @@
 /*
 Manipulating CSS Class Properties Using JavaScript
 Author: Orson C. Badger
+
+This is a simple study on how to change the css properties just in our javascript. As you can see there are alot of things that we can do to test the limits of our css.
 */
 
 
+
+//This changes the color of the text of "div1", this is to see if we can make it behave a certain way if we are trying change it with a radio button.
 function cssManipulation() {
     var value = document.querySelector('input[name = "r"]:checked').value;
 
@@ -27,7 +31,7 @@ function cssManipulation() {
 }
 
 
-
+//This changes the fontweight, fontStyle, and textDecoration of the text of "div1", this is to see if we can make it behave a certain way if we are trying change it with a radio button.
 function cssManipulation2() {
     //Select the input by the assigned name. the :condition is what it looks for when running. This will only get the value of a checked radio button
   
@@ -63,6 +67,9 @@ function cssManipulation2() {
         console.log(e.toString);
     }
 }
+
+//These functions are for a series of buttons to call them, this will build a webpage dynamically by altering the css properties we have set.
+
 
 function cssManipulation3a() {
 

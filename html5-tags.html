@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Tags</title>
+    <style>
+        /*Define my id css for my tags*/ 
+        #vid {
+            
+            display: block;
+            margin: 0px auto;
+            width: 100%;
+            
+        }
+        #snap {
+            
+            background-color: orange ;
+            border-radius: 10px;
+            display: block;
+            margin: 0px auto;
+            width: 50%;
+            
+        }
+
+        #canvas {
+            border: 3px black solid;
+            border-radius: 10px;
+            display: block;
+            margin: 10px auto;
+            background: white;
+
+        }
+
+        .header-position {
+            justify-content: center;
+            text-align: center;
+            margin-top: 100px;
+            color: white;
+            font-family: "Gotham SSm A", "Gotham SSm B", Helvetica, sans-serif;
+            font-weight: lighter;
+            background: -webkit-linear-gradient(top, orange, orangered);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+        }
+
+        .header-position-two {
+            justify-content: center;
+            text-align: center;
+            margin-top: 20px;
+            color: white
+        }
+
+        body {
+            background :#404040;
+            margin:0px;
+
+        }
+
+        p {
+            color:white;
+            padding-left: 450px;
+            padding-right: 450px;
+        }
+
+        #div1 {
+            padding-bottom:50px;
+            padding-left:450px;
+            padding-right:450px;
+            padding-top:20px
+        }
+    </style>
+    <script src="sandboxes/html5.js"></script>
+
+</head>
+<body>
+    <!--To add a video, you need to have one first, it has a few options one for autoplay and controls it accepts only a few types of video mp4, webm, and ogg-->
+    <h1 class="header-position">SINTEL</h1>
+    <div>    
+        <video id="vid" src="media/sintel.mp4" controls muted autoplay>Sintel</video>
+        <p>This is to show we can add a video to our webpage by just referencing it with our src. If we want to we can make the video play when the page starts, which is what I do here. I also make it so the video can be paused the volume turned up and down etc...</p>
+    </div>
+
+    <!--To add a audio file, you need to have one first, it has a few options one for autoplay and controls it accepts only a few types of video mp3, wav, and ogg-->
+
+    <h1 class="header-position">Audio Clip</h1>
+    <audio id="snap" src="media/bensound-dubstep.mp3" controls loop></audio>
+    <h6 class="header-position-two">Courtesy of https://www.bensound.com</h6>
+
+
+    <!--Canvas-->
+    <div id="div1">
+        <h1 class="header-position">Canvas</h1>
+        <canvas id="canvas" width="1000px" height="500px"></canvas>
+        <button onclick="drawLine()">Draw Line</button>
+        <button onclick="drawCircle()">Draw Circle</button>
+        <button onclick="drawTriangle()">Draw Triangle</button>
+        <button onclick="drawStrokeText()">Draw Text</button>
+    </div>
+
+
+
+    
+</body>
+</html>
