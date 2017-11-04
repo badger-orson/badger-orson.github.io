@@ -61,14 +61,15 @@
 
         p {
             color:white;
-            padding-left: 450px;
-            padding-right: 450px;
+            padding-left: 25%;
+            padding-right: 25%;
         }
 
         #div1 {
             padding-bottom:50px;
-            padding-left:450px;
-            padding-right:450px;
+            margin-left: 40%;
+            margin-right: 40%;
+
             padding-top:20px
         }
     </style>
@@ -91,9 +92,10 @@
 
 
     <!--Canvas-->
+    
+    <h1 class="header-position">Canvas</h1>
+    <canvas id="canvas" width="1000px" height="500px"></canvas>
     <div id="div1">
-        <h1 class="header-position">Canvas</h1>
-        <canvas id="canvas" width="1000px" height="500px"></canvas>
         <button onclick="drawLine()">Draw Line</button>
         <button onclick="drawCircle()">Draw Circle</button>
         <button onclick="drawTriangle()">Draw Triangle</button>
