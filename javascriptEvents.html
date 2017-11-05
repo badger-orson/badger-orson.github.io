@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="sandboxes/javascriptEvents.js"></script>
+    <script>
+    //establish my canvas variables  
+    // This function is going to allow you to move a circle across the screen of its div. It only works for touch Items. It is basically drawing
+    var canvas;
+    var ctx;
+    var width = 0;
+    var height = 0;
+    var timer;
+    var touches;
+    var updatedStarted = false;
+    var touches = [];
+
+    function updateStatus() {
+        if (updatedStarted)
+            return;
+
+        updatedStarted = true;
+        var nw = 500;
+        var nh = 500;
+
+        if ((width != nw) || (height != nh) ) {
+            width = nw;
+            height = nh;
+            canvas.style.width = width + 'px'; //Set the size of the canvas to draw on.
+            canvas.style.height = height + 'px';
+            canvas.width =  width;
+            canvas.height = height;
+        }
+
+        //ctx.clearRect (0,0, width, height);
+
+        var i, len = touches.length;
+
+        for (i = 0; i < len; i++) {
+            var touch = touches[i];
+            var x = touch.pageX; // This is the Coordinate set for our pair of x,y
+            var y = touch.pageY;
+
+            ctx.beginPath();
+            ctx.arc(x,y, 4, 0 , Math.PI*2, true);
+            ctx.fillStyle = "black";
+            ctx.fill();
+            ctx.lineWith = 2.0;
+            ctx.strokeStyle = "green";
+            ctx.stroke();
+
+            
+            console.log("Circle drawn at " + x + "," + y);
+        }
+        updatedStarted = false;
+    }
+
+    function draw() {
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext('2d');
+            timer = setInterval(updateStatus, 10);
+            canvas.addEventListener('touchend', function() {
+                //ctx.clearRect(0, 0, width, height);
+            });
+
+
+            canvas.addEventListener('touchmove', function(event) {
+                event.preventDefault();
+                touches = event.touches;
+            });
+
+
+            canvas.addEventListener('touchstart', function(event) {
+                console.log('started drawing');
+            });
+    }
+    
+    
+    
+    </script>
+    <style>
+        #red {
+            background: red;
+        }
+
+        #blue {
+            background: blue;
+        }
+
+        #yellow {
+            background: yellow;
+            
+        }
+        /*Basic Css Transistion*/
+        #yellow:hover {
+            background: blueviolet;
+        }
+
+        #orange {
+            background: orange;
+            animation-name: boxMove;
+            animation-duration: 6s;
+            animation-delay: 2s;
+            position: relative;
+            animation-iteration-count: infinite;
+            
+        }
+
+        #canvas {
+            background: white;
+            border-color: black;
+            border-style: solid;
+            border-width: 2px;
+        }
+
+        @keyframes boxMove {
+            0% {background-color: orange; left: 0px; top: 0px;}
+            22% {background-color: purple; left: 0px; top: 10px;}
+            25% {background-color: red; left: 0px; top: 500px;}
+            30% {background-color: hotpink; left: 500px; top: 0px;}
+            35% {background-color: green; left: 300px; top: 0px; right:15px }
+            50% {background-color: yellow; left: 50px; top: 0px;}
+            60% {background-color: hotpink; left: 300px; top: 0px; right:35px}
+            75% {background-color:blue; left: 0px; right: 0px;}
+        }
+
+
+
+        .divsofworth {
+            height: 500px;
+            width: 500px;
+            color: white;
+        }
+    
+    </style>
+</head>
+<body onload="callOnLoad()" style="margin: 50px;">
+    <p>Look at the Console to see the touchevents working well. You will see the target div base off of the div id. make sure you emulate touches to see it working.</p>
+
+    
+    <canvas onclick="draw()" id="canvas" width="500" height="500" style="top:0px; left:0px; width: 500px; height: 500px;"></canvas>
+
+    <div class="divsofworth" id="red" onmouseover="onMouseOver(this)" onmouseout="onout(this)">Run The Mouse Over ME</div>
+    <div class="divsofworth" id="blue" onclick="onClick(this)"> Click ME</div>
+    <div class="divsofworth" id="yellow">Using CSS Hover</div>
+    <div class="divsofworth" id="orange">Just a stupid css animation</div>
+
+
+    
+</body>
+</html>
