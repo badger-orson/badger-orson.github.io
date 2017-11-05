@@ -35,7 +35,7 @@
             canvas.height = height;
         }
 
-        //ctx.clearRect (0,0, width, height);
+        //ctx.clearRect (0,0, width, height); This will delete, But I decided I did not want to do that.
 
         var i, len = touches.length;
 
@@ -63,7 +63,7 @@
         ctx = canvas.getContext('2d');
             timer = setInterval(updateStatus, 10);
             canvas.addEventListener('touchend', function() {
-                //ctx.clearRect(0, 0, width, height);
+                
             });
 
 
