@@ -41,19 +41,27 @@
 
         for (i = 0; i < len; i++) {
             var touch = touches[i];
-            var x = touch.pageX; // This is the Coordinate set for our pair of x,y
-            var y = touch.pageY;
+            // This is the Coordinate set for our pair of x,y we have to make sure it is in our canvas. Otherwise stop drawing.
+            if (touch.pageX <= width && touch.pageY <= height && touch.pageX >= 0 && touch.pageY >= 0){
+                var x = touch.pageX; 
+                var y = touch.pageY;
 
-            ctx.beginPath();
-            ctx.arc(x,y, 4, 0 , Math.PI*2, true);
-            ctx.fillStyle = "black";
-            ctx.fill();
-            ctx.lineWith = 2.0;
-            ctx.strokeStyle = "green";
-            ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(x,y, 4, 0 , Math.PI*2, true);
+                ctx.fillStyle = "black";
+                ctx.fill();
+                ctx.lineWith = 2.0;
+                ctx.strokeStyle = "green";
+                ctx.stroke();
+          
+                console.log("Circle drawn at " + x + "," + y);
+
+            }
+            else {
+                console.log("Drawing out of bounds"); //This is an error message to detect if we are out of bounds.
+            }
 
             
-            console.log("Circle drawn at " + x + "," + y);
         }
         updatedStarted = false;
     }
