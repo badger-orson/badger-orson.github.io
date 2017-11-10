@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS transforms</title>
+    <style>
+
+    span {
+        margin-left: 60px;
+    }
+
+    .divbody {
+        height: 150px;
+        width: 150px;
+        margin: 80px;
+    }
+
+    /*Practice rotating a div*/
+    #div1 {
+        background: purple;
+        /* animation: roll 3s 1; */
+        animation-duration: 3s;
+        animation-iteration-count: 1;
+        animation-direction: alternate-reverse;
+        animation-play-state: running;
+        animation-timing-function: linear;
+    }
+
+    @keyframes roll {
+        from {
+            transform: rotate(0deg);
+            opacity: 0;
+        }
+        to {
+            transform: rotate(360deg);
+            opacity: 1;
+        }
+        
+
+    }
+
+    /*Practice skewing a div*/
+    #div2 {
+        background: orange;
+        animation: skew 3s infinite;
+        animation-direction: alternate;
+    }
+
+    @keyframes skew {
+        0% {
+            transform: skew(-30deg);
+        }
+        100% {
+            transform: skew(30deg);
+        }
+    }
+    
+    /*Practice scaling a div*/
+    #div3 {
+        background: blue;
+        animation:scale 5s infinite;
+        animation-direction: alternate;
+    }
+
+    @keyframes scale {
+        0% {
+            transform: scale(2);
+        }
+        100% {
+            transform: scale(.10);
+            background: orange;
+        }
+    }
+
+    /*Practice translate a div*/
+    #div4 {
+        background: black;
+        animation: translate 10s infinite;
+        animation-direction: alternate;
+    }
+
+    @keyframes translate {
+        0% {
+            transform: translate(0px, 0px);
+        }
+        100% {
+            transform: translate(300px, 0px);
+        }
+    }
+    
+
+    #div5 {
+        background: violet;
+        transition-property: all;
+        transition-duration: 3s;
+        transition-timing-function: ease;
+        transition-delay: .01s;
+    }
+
+    #div6 {
+        background: teal;  
+        margin-left: 0;
+        transition: margin-left -1s ease-in-out -1s; 
+    }
+
+
+    /*Practice transistion without js a div*/
+    #div7 {
+        background: fuchsia;
+    }
+
+    #div7:hover {
+        background-color: rgb(115, 92, 218);
+        transition: background-color 3s ease-out;
+    }
+    
+    </style>
+
+    <script>
+    
+    function setListeners(){
+            var div = document.getElementById("div1");
+            var styleSheets = document.styleSheets
+            console.log(styleSheets);
+            console.log(div)
+            div.addEventListener("animationend", function(event){
+                div.style.animationName = ""
+                div.style.animationPlayState = "paused"
+                console.log(div.style)
+            })
+        }
+
+    //Transition using JavaScript
+    function transition(id) { 
+        var div = document.getElementById(id)
+            console.log(div.style.marginLeft);
+            
+            if(div.style.marginLeft == '100px'){
+                div.style.marginLeft = '200px';
+                console.log(div.style.marginLeft);
+            } else { 
+                div.style.marginLeft = '100px';
+                div.style.marginTop = '100px';
+                console.log(div.style.marginLeft);
+            }
+    }
+
+    function animateStateChange1(id){
+            var div = document.getElementById(id)
+            
+            if(div.style.animationPlayState == "running"){
+                div.style.animationPlayState = "paused"
+              
+            } else {
+                div.style.animationName = "roll"
+                div.style.animationPlayState = "running"
+            }
+        }
+
+    //Trigger something with javaScript this uses the mouseover
+     function mouseovertrigger(div) {
+        div.style.transform = "rotate(20deg) scale(1.5,1.5) translate(550px,0px)"
+         
+     }
+
+     function mouseouttrigger(div) {
+        div.style.transform = "rotate(0deg) scale(1,1) translate(0px,0px)"
+     }
+        
+    </script>
+</head>
+<body onload="setListeners()">
+    <span>This Div transforms using rotate() triggered with JS</span>
+    <div class ="divbody" id="div1" onclick="animateStateChange1(this.id)"></div>
+    <span>This Div transforms using skew()</span>
+    <div class ="divbody" id="div2"></div>
+    <span>This Div transforms using scale()</span>
+    <div class ="divbody" id="div3"></div>
+    <span>This Div transforms using translate()</span>
+    <div class ="divbody" id="div4"></div>
+    <span>This Div transforms and transistions using a JS function</span>
+    <div class ="divbody" id="div5" onmouseover="mouseovertrigger(this)" onmouseout="mouseouttrigger(this)"></div>
+    <span>This Div transistions using JS click to see it work</span>
+    <div class ="divbody" id="div6" onclick="transition(this.id)"></div>
+    <span>This Div transistions using css Transistion hover over it</span>
+    <div class ="divbody" id="div7"></div>
+</body>
+</html>
