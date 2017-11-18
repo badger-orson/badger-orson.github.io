@@ -56,9 +56,10 @@ function cssManipulation2() {
             text = document.getElementById("body");
 
             //Reset the values to a original values before changing them
-            text.style.textDecoration  = "none";
-            text.style.fontStyle  = "normal";
-            text.style.fontWeight = "normal";
+            //text.style.textDecoration  = "none";
+            text.style = "";
+            //text.style.fontStyle  = "normal";
+            //text.style.fontWeight = "normal";
         }
 
         console.log("Status" + text.style.fontStyle);
