@@ -40,7 +40,44 @@ function callOnLoad() {
     }
 
 
+    canvasReady();
 }
+
+
+function canvasReady() {
+    console.log("Hello from CanvasReady");
+    var canvas = document.getElementById("canvas");
+            
+    canvas.addEventListener('touchend', function() {
+        touches = 0;
+        console.log('Stopped Drawing: Reason, no touches present');
+        
+    });
+
+
+    canvas.addEventListener('touchmove', function(event) {
+        event.preventDefault();
+
+        touches = event.touches;
+        draw();
+    });
+
+
+    canvas.addEventListener('touchstart', function(event) {
+        console.log('Started Drawing: Reason, touches present');
+        touches = event.touches;
+        draw();
+    });
+}
+
+
+function draw() {
+    canvas = document.getElementById("canvas");
+    ctx = canvas.getContext('2d');
+        timer = setInterval(updateStatus, 10);
+
+}
+
 
 
 function onMouseOver(obj) {

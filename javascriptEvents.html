@@ -35,7 +35,7 @@
             canvas.height = height;
         }
 
-        //ctx.clearRect (0,0, width, height); This will delete, But I decided I did not want to do that.
+        //ctx.clearRect (0,0, width, height);// This will delete, But I decided I did not want to do that.
 
         var i, len = touches.length;
 
@@ -51,40 +51,23 @@
                 ctx.fillStyle = "black";
                 ctx.fill();
                 ctx.lineWith = 2.0;
-                ctx.strokeStyle = "green";
+                ctx.strokeStyle = "black";
                 ctx.stroke();
           
-                console.log("Circle drawn at " + x + "," + y);
 
+                console.log("Circle drawn at " + x + "," + y);
+                
             }
             else {
-                console.log("Drawing out of bounds"); //This is an error message to detect if we are out of bounds.
+                //As long as your touch is out of bounds this will fire, but it will not draw anything new.             
+                //console.log("Drawing out of bounds"); //This is an error message to detect if we are out of bounds.
             }
-
-            
+        
         }
         updatedStarted = false;
     }
 
-    function draw() {
-        canvas = document.getElementById("canvas");
-        ctx = canvas.getContext('2d');
-            timer = setInterval(updateStatus, 10);
-            canvas.addEventListener('touchend', function() {
-                
-            });
 
-
-            canvas.addEventListener('touchmove', function(event) {
-                event.preventDefault();
-                touches = event.touches;
-            });
-
-
-            canvas.addEventListener('touchstart', function(event) {
-                console.log('started drawing');
-            });
-    }
     
     
     
@@ -149,7 +132,7 @@
     <p>Look at the Console to see the touchevents working well. You will see the target div base off of the div id. make sure you emulate touches to see it working.</p>
 
     
-    <canvas onclick="draw()" id="canvas" width="500" height="500" style="top:0px; left:0px; width: 500px; height: 500px;"></canvas>
+    <canvas id="canvas" width="500" height="500" style="top:0px; left:0px; width: 500px; height: 500px;"></canvas>
 
     <div class="divsofworth" id="red" onmouseover="onMouseOver(this)" onmouseout="onout(this)">Run The Mouse Over ME</div>
     <div class="divsofworth" id="blue" onclick="onClick(this)"> Click ME</div>
