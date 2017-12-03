@@ -12,53 +12,199 @@
     }
 
     input[type='checkbox'] {
-        -webkit-appearance:none;
-        width:30px;
-        height:30px;
-        background:white;
-        border-radius:5px;  
-        border:2px solid #555;
+        -webkit-appearance: none;
+        width: 25px;
+        height: 25px;
+        background: white;
+        border-radius: 3px;
+        border: 2px solid #555;
+        margin-left: 75%;
+        position: relative;
+        top: 11px;
     }  
 
     input[type='checkbox']:checked {
-        background: #abd;
+        background:gold;
     }
 
-    #design {
-        font-size: 96px;
-        font-family: Arial, Helvetica, sans-serif
+    .design {
+        font-size: 27px;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: gray;
+        border-radius: 3px;
+        border: solid 1px lime;
+        color: white;
+        
     }
+
+    #box {
+        /* background: purple; */
+        /* animation: roll 3s 1; */
+        animation-duration: 1.5s;
+        font-family: Arial, Helvetica, sans-serif;
+        animation-iteration-count: 2;
+        animation-direction: normal;
+        animation-play-state: running;
+        animation-timing-function: linear;
+        -webkit-text-stroke-width: .4px;
+        -webkit-text-stroke-color: black;
+    }
+
+    @keyframes roll {
+        0% {
+            transform: scale(2);
+            opacity: 1;
+            color:gold;
+        }
+        50% {
+            transform: scale(6);
+            opacity: 1;
+            color: red;
+        }
+        100% {
+            
+            transform: scale(2);
+            opacity: 1;
+            color: gold;
+        
+        }
+        
+    }
+
+    #billList li {
+        margin: 0px;
+        border:2px;
+        text-transform: uppercase; 
+        -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black;
+        
+    }
+
+    #billList {
+        margin-bottom: 0%;
+        padding-top: 2%;
+        margin-top: 2%;
+    }
+
+    .leftSide {
+        display: inline-block;
+        width: 50%;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .rightSide {
+        display: inline-block;
+        width: 50%;
+
+        /* vertical-align: middle; */
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .rightSide .button {
+        margin: 0%;
+        width:25px;
+        height: 25px;
+        background-color: red;
+        color:white;
+        border: solid 2px maroon;
+    }
+    .rightSide .button:hover {
+
+        background-color: rgba(255, 0, 0, 0.678);
+        border: solid 2px rgba(128, 0, 0, 0.753);
+    }
+
+    body {
+        
+        background-color: #262B2D;
+        padding-left: 20%;
+        padding-right: 20%;
+        height: 90vh;
+    }
+
+    #textField {
+        margin-left:5%;
+        margin-bottom: 4%;
+        border-radius: 3px;
+        border: solid 2px #262B2D;
+        width: 45%;
+    }
+
+    .button {
+        border-radius: 3px;
+        border: solid 2px #262B2D;
+        margin-left: 28.5%;
+        color: black;
+    }
+
+    
+    .innerDiv {
+        margin-left: 20%;
+        color: white;
+
+        margin-right:20%;
+    }
+
+    #menu {
+        color:white;
+        font-family: Arial, Helvetica, sans-serif;
+
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    p {   
+        font-size: 12px;
+        color:white;
+        font-family: Arial, Helvetica, sans-serif;
+        text-transform: uppercase;
+        padding: 3%;
+    }
+
+    footer {
+        
+        color:white;
+        font-family: Arial, Helvetica, sans-serif;
+        text-transform: uppercase;
+        padding:2%;
+    }
+    
+    
 
 
 
     </style>
+    <script src="app.js"></script>
 </head>
-<body>
-    <div id = "menu" style="background-color: gray; width: 50%; height: 100%">
-        Pay Your Bills: 
+<body id = "body" onload="loadState()">
+<div class="innerdiv" id="innerDiv"> 
 
-    </div>
-    <div id = "menu" style="background-color: gray; width: 50%; height: 100%"></div>
+
+        
+    
+    <div id = "menu" ><h3>Did you Remember to Pay?</h4></div>
+    <p>
+        Welcome to "Did you Remember to Pay?", this application will allow you to store a list of bills.. Then you check them off when you remember to pay them
+        this will also remember them when you need them again. You can add and delete bills.
+    </p>
     <div>
-        <div id="design" style="float:left; background-color:gray; color:white; width:50%">
-            <ul>
-                <li>Bill 1 </li>
-                <li>Bill 2 </li>
-                <li>Bill 3 </li>
+        <div class="design" id = "d">
+            <ul id ="billList">
+
             </ul>
+
+            <div><input id="textField" type=textbox required> <button class="button" onclick="addNewBill()">Submit New Bill</button></div>
         </div>
-
-        <div id="design" style="float: right;">
-            <ul>
-                <li><input type="checkbox" name="billPayed" value=""> </li>
-                <li><input type="checkbox" name="billPayed" value=""> </li>
-                <li><input type="checkbox" name="billPayed" value=""> </li>
-            </ul>
-        </div>
-
-
     </div>
-   
 
+
+
+  
+   
+</div>
 </body>
+<footer><h6>Copyright: Orson C Badger</h6></footer>
 </html>
