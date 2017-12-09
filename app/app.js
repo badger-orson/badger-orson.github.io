@@ -14,12 +14,16 @@ function addNewBill() {
 }
 
 
-function checkboxAlert() { 
+function checkboxAlert(checked) { 
+
+    if (checked.checked == true) {
+        console.log("Hello")
+    
     
     var dive = document.createElement("div");
-    var body= document.getElementById("innerDiv");
+    var body= document.getElementById("billList");
     
-    var text = document.createTextNode("CONGRATULATIONS!!!!!!");
+    var text = document.createTextNode("CONGRATULATIONS");
    // text.setAttribute("id", "box");
 
     dive.setAttribute("id", "box");
@@ -30,15 +34,16 @@ function checkboxAlert() {
     // dive.style.marginBottom = "90%"
     dive.style.textAlign = "center"
 
-    dive.style.position = "relative";
-    dive.style.left = "25%";
-    dive.style.bottom = "120px";
+    dive.style.position = "absolute";
+    dive.style.left = "40%";
+    dive.style.bottom = "60%";
+
     dive.appendChild(text);
 
 
 
     //body.appendChild(dive);
-    body.appendChild(dive);
+    body.append(dive);
 
 
     //var div = document.getElementById(box)
@@ -59,6 +64,7 @@ function checkboxAlert() {
       dive.addEventListener("animationend", function(event) {
         body.removeChild(dive);
       }, false);
+    }
 
     saveCurrentState();
 
